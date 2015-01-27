@@ -1,7 +1,14 @@
 {
   "name": "slide.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Slide",
+  "main": "slide.js",
+  "scripts": {
+    "start": "node ./node_modules/.bin/coffee -c -w slide.coffee"
+  },
   "author": "sugarshin",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "coffee-script": "^1.8.0"
+  }
 }

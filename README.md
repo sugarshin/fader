@@ -1,1 +1,5 @@
 # Slide
+
+```shell
+npm start
+```
