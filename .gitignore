@@ -1,4 +1,4 @@
-### https://raw.github.com/github/gitignore/70d01c389d1206c30f32ca059a7fe91bda2f2832/Node.gitignore
+### https://raw.github.com/github/gitignore/62d6528cb16b198a8387a3398d91e674973006d0/Node.gitignore
 
 # Logs
 logs
@@ -25,10 +25,5 @@ coverage
 build/Release
 
 # Dependency directory
-# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
-
-# Debug log from npm
-npm-debug.log
-
-

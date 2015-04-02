@@ -1,14 +1,149 @@
 {
-  "name": "slide.js",
-  "version": "0.0.2",
-  "description": "Slide",
-  "main": "slide.js",
+  "name": "fader",
+  "version": "0.0.3",
+  "description": "Fader",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./node_modules/.bin/coffee -c -w slide.coffee"
+    "start": "coffee -cw -o lib/ src/",
+    "lint": "coffeelint ./src/fader.coffee",
+    "test": "mocha --require espower-coffee/guess test/**/*.coffee",
+    "compile": "coffee -c -o lib/ src/",
+    "build-standalone": "browserify src/fader.coffee -t coffeeify -s Fader | derequire > build/fader.js",
+    "build-min": "uglifyjs build/fader.js -m -c warnings=false --comments '/\\/*!/' -o build/fader.min.js",
+    "build": "npm run lint && npm run compile && npm run build-standalone && npm run build-min"
+  },
+  "coffeelintConfig": {
+    "coffeescript_error": {
+      "level": "error"
+    },
+    "arrow_spacing": {
+      "name": "arrow_spacing",
+      "level": "warn"
+    },
+    "no_tabs": {
+      "name": "no_tabs",
+      "level": "error"
+    },
+    "no_trailing_whitespace": {
+      "name": "no_trailing_whitespace",
+      "level": "warn",
+      "allowed_in_comments": false,
+      "allowed_in_empty_lines": true
+    },
+    "max_line_length": {
+      "name": "max_line_length",
+      "value": 80,
+      "level": "warn",
+      "limitComments": true
+    },
+    "line_endings": {
+      "name": "line_endings",
+      "level": "ignore",
+      "value": "unix"
+    },
+    "no_trailing_semicolons": {
+      "name": "no_trailing_semicolons",
+      "level": "error"
+    },
+    "indentation": {
+      "name": "indentation",
+      "value": 2,
+      "level": "error"
+    },
+    "camel_case_classes": {
+      "name": "camel_case_classes",
+      "level": "error"
+    },
+    "colon_assignment_spacing": {
+      "name": "colon_assignment_spacing",
+      "level": "warn",
+      "spacing": {
+        "left": 0,
+        "right": 1
+      }
+    },
+    "no_implicit_braces": {
+      "name": "no_implicit_braces",
+      "level": "ignore",
+      "strict": true
+    },
+    "no_plusplus": {
+      "name": "no_plusplus",
+      "level": "ignore"
+    },
+    "no_throwing_strings": {
+      "name": "no_throwing_strings",
+      "level": "error"
+    },
+    "no_backticks": {
+      "name": "no_backticks",
+      "level": "error"
+    },
+    "no_implicit_parens": {
+      "name": "no_implicit_parens",
+      "level": "ignore"
+    },
+    "no_empty_param_list": {
+      "name": "no_empty_param_list",
+      "level": "warn"
+    },
+    "no_stand_alone_at": {
+      "name": "no_stand_alone_at",
+      "level": "ignore"
+    },
+    "space_operators": {
+      "name": "space_operators",
+      "level": "warn"
+    },
+    "duplicate_key": {
+      "name": "duplicate_key",
+      "level": "error"
+    },
+    "empty_constructor_needs_parens": {
+      "name": "empty_constructor_needs_parens",
+      "level": "ignore"
+    },
+    "cyclomatic_complexity": {
+      "name": "cyclomatic_complexity",
+      "value": 10,
+      "level": "ignore"
+    },
+    "newlines_after_classes": {
+      "name": "newlines_after_classes",
+      "value": 3,
+      "level": "ignore"
+    },
+    "no_unnecessary_fat_arrows": {
+      "name": "no_unnecessary_fat_arrows",
+      "level": "warn"
+    },
+    "missing_fat_arrows": {
+      "name": "missing_fat_arrows",
+      "level": "ignore"
+    },
+    "non_empty_constructor_needs_parens": {
+      "name": "non_empty_constructor_needs_parens",
+      "level": "ignore"
+    }
+  },
+  "engines": {
+    "node": "0.12.x"
   },
   "author": "sugarshin",
   "license": "MIT",
   "devDependencies": {
-    "coffee-script": "^1.8.0"
+    "browserify": "^9.0.4",
+    "coffee-script": "^1.9.0",
+    "coffeeify": "^1.0.0",
+    "coffeelint": "^1.9.3",
+    "derequire": "^2.0.0",
+    "espower-coffee": "^0.10.0",
+    "jsdom": "^4.1.0",
+    "mocha": "^2.2.1",
+    "power-assert": "^0.10.2",
+    "uglify-js": "^2.4.19"
+  },
+  "dependencies": {
+    "jquery": "^2.1.3"
   }
 }
